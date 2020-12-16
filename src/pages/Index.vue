@@ -30,7 +30,7 @@ export default {
     checkUpdate () {
       const { app, autoUpdater, dialog } = require('electron').remote
 
-      const server = 'https://au-test-app.vercel.app'
+      const server = 'https://au-test-app.logicalmindapps.vercel.app'
       const url = `${server}/update/${process.platform}/${app.getVersion()}`
 
       console.log('url:')
