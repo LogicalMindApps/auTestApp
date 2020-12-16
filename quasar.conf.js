@@ -193,6 +193,18 @@ module.exports = function (/* ctx */) {
           token: '96a3c28742072de64aa2b5c85bdccb1d73351ad4'
         }
          */
+        build: {
+          appId: 'com.auTestApp',
+          output: 'dist',
+          directories: {
+            output: 'dist'
+          }
+        },
+        output: 'dist',
+        directories: {
+          output: 'dist'
+        }
+
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
