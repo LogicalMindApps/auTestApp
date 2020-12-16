@@ -21,8 +21,8 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 600,
+    width: 1600,
+    height: 900,
     useContentSize: true,
     webPreferences: {
       // Change from /quasar.conf.js > electron > nodeIntegration;
@@ -41,18 +41,7 @@ function createWindow () {
     mainWindow = null
   })
 
-  const { autoUpdater } = require('electron-updater')
-  mainWindow.once('ready-to-show', () => {
-    autoUpdater.checkForUpdatesAndNotify()
-  })
-
-  autoUpdater.on('update-available', () => {
-    mainWindow.webContents.send('update_available')
-  })
-  autoUpdater.on('update-downloaded', () => {
-    mainWindow.webContents.send('update_downloaded')
-  })
-
+  require('update-electron-app')()
 }
 
 app.on('ready', createWindow)

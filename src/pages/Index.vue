@@ -5,7 +5,8 @@
       src="~assets/quasar-logo-full.svg"
 
     >
-    <div class="column col" style="padding-top: 20px">
+    <q-btn label="Check for update" @click="checkUpdate" style="margin-top: 20px" />
+    <div class="column col" style="margin-top: 20px">
       <div class="col-auto">
         isUpdateAvailable: {{ isUpdateAvailable }}
       </div>
@@ -25,15 +26,30 @@ export default {
       isUpdateDownloaded: false,
     }
   },
-  created () {
-    const { ipcRenderer } = require('electron')
-    ipcRenderer.on('update_available', () => {
-      ipcRenderer.removeAllListeners('update_available')
-    })
-    ipcRenderer.on('update_downloaded', () => {
-      ipcRenderer.removeAllListeners('update_downloaded')
-    })
-  }
+  methods: {
+    checkUpdate () {
+      const { app, autoUpdater, dialog } = require('electron').remote
 
+      const server = 'https://au-test-app.vercel.app'
+      const url = `${server}/update/${process.platform}/${app.getVersion()}`
+
+      console.log('url:')
+      console.log(url)
+
+      autoUpdater.setFeedURL({ url })
+
+      autoUpdater.checkForUpdates()
+
+      autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+        console.log('UPDATE FOUND!')
+      })
+
+      autoUpdater.on('error', message => {
+        console.error('There was a problem updating the application')
+        console.error(message)
+      })
+
+    },
+  }
 }
 </script>
