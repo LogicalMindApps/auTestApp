@@ -10,7 +10,7 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev:electron": "quasar dev -m electron",
     "build:electron": "quasar build -m electron",
-    "build": "quasar build"
+    "build": "quasar build -m electron"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",

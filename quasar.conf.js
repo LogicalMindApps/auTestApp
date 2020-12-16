@@ -186,11 +186,13 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
+        /*
         appId: 'auto-update-test-app',
         publish: {
           provider: 'github',
           token: '96a3c28742072de64aa2b5c85bdccb1d73351ad4'
         }
+         */
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
